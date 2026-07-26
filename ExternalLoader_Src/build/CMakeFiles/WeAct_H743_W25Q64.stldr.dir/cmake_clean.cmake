@@ -1,0 +1,40 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/WeAct_H743_W25Q64.stldr.dir/C_/Users/vuman/Downloads/car-head/car-head/Core/Src/quadspi.c.obj"
+  "CMakeFiles/WeAct_H743_W25Q64.stldr.dir/C_/Users/vuman/Downloads/car-head/car-head/Core/Src/quadspi.c.obj.d"
+  "CMakeFiles/WeAct_H743_W25Q64.stldr.dir/C_/Users/vuman/Downloads/car-head/car-head/Core/Src/stm32h7xx_hal_msp.c.obj"
+  "CMakeFiles/WeAct_H743_W25Q64.stldr.dir/C_/Users/vuman/Downloads/car-head/car-head/Core/Src/stm32h7xx_hal_msp.c.obj.d"
+  "CMakeFiles/WeAct_H743_W25Q64.stldr.dir/C_/Users/vuman/Downloads/car-head/car-head/Core/Src/system_stm32h7xx.c.obj"
+  "CMakeFiles/WeAct_H743_W25Q64.stldr.dir/C_/Users/vuman/Downloads/car-head/car-head/Core/Src/system_stm32h7xx.c.obj.d"
+  "CMakeFiles/WeAct_H743_W25Q64.stldr.dir/C_/Users/vuman/Downloads/car-head/car-head/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c.obj"
+  "CMakeFiles/WeAct_H743_W25Q64.stldr.dir/C_/Users/vuman/Downloads/car-head/car-head/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.c.obj.d"
+  "CMakeFiles/WeAct_H743_W25Q64.stldr.dir/C_/Users/vuman/Downloads/car-head/car-head/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.obj"
+  "CMakeFiles/WeAct_H743_W25Q64.stldr.dir/C_/Users/vuman/Downloads/car-head/car-head/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c.obj.d"
+  "CMakeFiles/WeAct_H743_W25Q64.stldr.dir/C_/Users/vuman/Downloads/car-head/car-head/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.c.obj"
+  "CMakeFiles/WeAct_H743_W25Q64.stldr.dir/C_/Users/vuman/Downloads/car-head/car-head/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.c.obj.d"
+  "CMakeFiles/WeAct_H743_W25Q64.stldr.dir/C_/Users/vuman/Downloads/car-head/car-head/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_mdma.c.obj"
+  "CMakeFiles/WeAct_H743_W25Q64.stldr.dir/C_/Users/vuman/Downloads/car-head/car-head/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_mdma.c.obj.d"
+  "CMakeFiles/WeAct_H743_W25Q64.stldr.dir/C_/Users/vuman/Downloads/car-head/car-head/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr.c.obj"
+  "CMakeFiles/WeAct_H743_W25Q64.stldr.dir/C_/Users/vuman/Downloads/car-head/car-head/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr.c.obj.d"
+  "CMakeFiles/WeAct_H743_W25Q64.stldr.dir/C_/Users/vuman/Downloads/car-head/car-head/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr_ex.c.obj"
+  "CMakeFiles/WeAct_H743_W25Q64.stldr.dir/C_/Users/vuman/Downloads/car-head/car-head/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr_ex.c.obj.d"
+  "CMakeFiles/WeAct_H743_W25Q64.stldr.dir/C_/Users/vuman/Downloads/car-head/car-head/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_qspi.c.obj"
+  "CMakeFiles/WeAct_H743_W25Q64.stldr.dir/C_/Users/vuman/Downloads/car-head/car-head/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_qspi.c.obj.d"
+  "CMakeFiles/WeAct_H743_W25Q64.stldr.dir/C_/Users/vuman/Downloads/car-head/car-head/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c.obj"
+  "CMakeFiles/WeAct_H743_W25Q64.stldr.dir/C_/Users/vuman/Downloads/car-head/car-head/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c.obj.d"
+  "CMakeFiles/WeAct_H743_W25Q64.stldr.dir/C_/Users/vuman/Downloads/car-head/car-head/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c.obj"
+  "CMakeFiles/WeAct_H743_W25Q64.stldr.dir/C_/Users/vuman/Downloads/car-head/car-head/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c.obj.d"
+  "CMakeFiles/WeAct_H743_W25Q64.stldr.dir/C_/Users/vuman/Downloads/car-head/car-head/UserLibrary/Bsp_W25q64.c.obj"
+  "CMakeFiles/WeAct_H743_W25Q64.stldr.dir/C_/Users/vuman/Downloads/car-head/car-head/UserLibrary/Bsp_W25q64.c.obj.d"
+  "CMakeFiles/WeAct_H743_W25Q64.stldr.dir/Dev_Inf.c.obj"
+  "CMakeFiles/WeAct_H743_W25Q64.stldr.dir/Dev_Inf.c.obj.d"
+  "CMakeFiles/WeAct_H743_W25Q64.stldr.dir/Loader_Src.c.obj"
+  "CMakeFiles/WeAct_H743_W25Q64.stldr.dir/Loader_Src.c.obj.d"
+  "WeAct_H743_W25Q64.stldr"
+  "WeAct_H743_W25Q64.stldr.manifest"
+  "WeAct_H743_W25Q64.stldr.pdb"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang C)
+  include(CMakeFiles/WeAct_H743_W25Q64.stldr.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

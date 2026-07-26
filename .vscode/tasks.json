@@ -16,6 +16,8 @@
             "args": [
                 "--connect",
                 "port=swd",
+                "-el",
+                "${workspaceFolder}/WeAct_H743_W25Q64.stldr",
                 "--download",
                 "${command:cmake.launchTargetPath}",
                 "-hardRst",

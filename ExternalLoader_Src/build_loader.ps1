@@ -11,7 +11,7 @@ if (!(Test-Path $BuildDir)) {
 Set-Location $BuildDir
 
 Write-Host "Configuring CMake for External Loader..." -ForegroundColor Cyan
-cmake -DCMAKE_TOOLCHAIN_FILE="$ToolchainFile" ..
+cmake -G "MinGW Makefiles" -DCMAKE_TOOLCHAIN_FILE="$ToolchainFile" ..
 
 Write-Host "Building External Loader..." -ForegroundColor Cyan
 cmake --build .
@@ -20,8 +20,8 @@ if (Test-Path "WeAct_H743_W25Q64.stldr") {
     Write-Host "=========================================" -ForegroundColor Green
     Write-Host "Success! The External Loader is ready:" -ForegroundColor Green
     Write-Host "$PWD\WeAct_H743_W25Q64.stldr" -ForegroundColor Yellow
-    Write-Host "Copy this file to:" -ForegroundColor Cyan
-    Write-Host "STM32CubeProgrammer: C:\Program Files\STMicroelectronics\STM32Cube\STM32CubeProgrammer\bin\ExternalLoader"
+    Write-Host "Copying to root folder..." -ForegroundColor Cyan
+    Copy-Item "WeAct_H743_W25Q64.stldr" "..\..\WeAct_H743_W25Q64.stldr" -Force
     Write-Host "=========================================" -ForegroundColor Green
 } else {
     Write-Host "Build failed." -ForegroundColor Red

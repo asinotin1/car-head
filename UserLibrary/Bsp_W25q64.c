@@ -1,6 +1,9 @@
 #include "Bsp_W25q64.h"
 #include "quadspi.h"
 
+int8_t QSPI_W25Qxx_WriteEnable(void);
+int8_t QSPI_W25Qxx_AutoPollingMemReady(void);
+
 int8_t QSPI_W25Qxx_Init(void)
 {
 	uint32_t	Device_ID;
@@ -10,6 +13,43 @@ int8_t QSPI_W25Qxx_Init(void)
 
 	if( Device_ID == W25Qxx_FLASH_ID)
 	{
+		/* Set QE Bit */
+		QSPI_CommandTypeDef s_command;
+		uint8_t reg[2] = {0, 0};
+
+		// Read SR1 (0x05)
+		s_command.InstructionMode   = QSPI_INSTRUCTION_1_LINE;
+		s_command.Instruction       = 0x05; 
+		s_command.AddressMode       = QSPI_ADDRESS_NONE;
+		s_command.AlternateByteMode = QSPI_ALTERNATE_BYTES_NONE;
+		s_command.DataMode          = QSPI_DATA_1_LINE;
+		s_command.DummyCycles       = 0;
+		s_command.NbData            = 1;
+		s_command.DdrMode           = QSPI_DDR_MODE_DISABLE;
+		s_command.DdrHoldHalfCycle  = QSPI_DDR_HHC_ANALOG_DELAY;
+		s_command.SIOOMode          = QSPI_SIOO_INST_EVERY_CMD;
+		HAL_QSPI_Command(&hqspi, &s_command, HAL_QPSI_TIMEOUT_DEFAULT_VALUE);
+		HAL_QSPI_Receive(&hqspi, &reg[0], HAL_QPSI_TIMEOUT_DEFAULT_VALUE);
+
+		// Read SR2 (0x35)
+		s_command.Instruction       = 0x35; 
+		HAL_QSPI_Command(&hqspi, &s_command, HAL_QPSI_TIMEOUT_DEFAULT_VALUE);
+		HAL_QSPI_Receive(&hqspi, &reg[1], HAL_QPSI_TIMEOUT_DEFAULT_VALUE);
+
+		// If QE is not set, set it
+		if ((reg[1] & 0x02) == 0)
+		{
+			reg[1] |= 0x02; // Set QE bit
+			QSPI_W25Qxx_WriteEnable();
+			
+			s_command.Instruction = 0x01; // Write Status Register
+			s_command.NbData = 2;
+			HAL_QSPI_Command(&hqspi, &s_command, HAL_QPSI_TIMEOUT_DEFAULT_VALUE);
+			HAL_QSPI_Transmit(&hqspi, reg, HAL_QPSI_TIMEOUT_DEFAULT_VALUE);
+			
+			QSPI_W25Qxx_AutoPollingMemReady();
+		}
+
 		return QSPI_W25Qxx_OK;
 	}
 	else
