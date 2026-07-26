@@ -247,24 +247,27 @@ TouchGFX_Framebuffer (NOLOAD) :
     *(TouchGFX_Framebuffer)
 } >SDRAM
 
-  .ExtFlashSection :
+  ExtFlashSection :
   {
     . = ALIGN(4);
+    *(ExtFlashSection ExtFlashSection.*)
     *(.ExtFlashSection .ExtFlashSection.*)
     *(.gnu.linkonce.r.*)
     . = ALIGN(4);
   } >QSPI
 
-  .FontFlashSection :
+  FontFlashSection :
   {
     . = ALIGN(4);
+    *(FontFlashSection FontFlashSection.*)
     *(.FontFlashSection .FontFlashSection.*)
     . = ALIGN(4);
   } >QSPI
 
-  .TextFlashSection :
+  TextFlashSection :
   {
     . = ALIGN(4);
+    *(TextFlashSection TextFlashSection.*)
     *(.TextFlashSection .TextFlashSection.*)
     . = ALIGN(4);
   } >QSPI
