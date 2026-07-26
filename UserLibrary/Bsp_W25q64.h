@@ -22,6 +22,7 @@
 #define W25Qxx_CMD_ChipErase 		0xC7
 
 #define W25Qxx_CMD_QuadInputPageProgram  	0x32
+#define W25Qxx_CMD_PageProgram           	0x02
 #define W25Qxx_CMD_FastReadQuad_IO       	0xEB
 
 #define W25Qxx_CMD_ReadStatus_REG1			0X05

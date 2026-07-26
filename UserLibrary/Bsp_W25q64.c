@@ -381,11 +381,11 @@ int8_t QSPI_W25Qxx_WritePage(uint8_t* pBuffer, uint32_t WriteAddr, uint16_t NumB
 	s_command.DdrHoldHalfCycle  = QSPI_DDR_HHC_ANALOG_DELAY;
 	s_command.SIOOMode          = QSPI_SIOO_INST_EVERY_CMD;
 	s_command.AddressMode 		 = QSPI_ADDRESS_1_LINE;
-	s_command.DataMode    		 = QSPI_DATA_4_LINES;
+	s_command.DataMode    		 = QSPI_DATA_1_LINE;
 	s_command.DummyCycles 		 = 0;
 	s_command.NbData      		 = NumByteToWrite;
 	s_command.Address     		 = WriteAddr;
-	s_command.Instruction 		 = W25Qxx_CMD_QuadInputPageProgram;
+	s_command.Instruction 		 = W25Qxx_CMD_PageProgram;
 
 	if (QSPI_W25Qxx_WriteEnable() != QSPI_W25Qxx_OK)
 	{

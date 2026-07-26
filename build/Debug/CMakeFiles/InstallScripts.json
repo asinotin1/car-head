@@ -1,9 +1,0 @@
-{
-	"InstallScripts" : 
-	[
-		"C:/Users/asion/Desktop/vs-stm32/car-head/build/Debug/cmake_install.cmake",
-		"C:/Users/asion/Desktop/vs-stm32/car-head/build/Debug/cmake/stm32cubemx/cmake_install.cmake",
-		"C:/Users/asion/Desktop/vs-stm32/car-head/build/Debug/cmake/touchgfx/cmake_install.cmake"
-	],
-	"Parallel" : false
-}
