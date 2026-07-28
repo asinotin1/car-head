@@ -11,7 +11,7 @@ if (!(Test-Path $BuildDir)) {
 Set-Location $BuildDir
 
 Write-Host "Configuring CMake for External Loader..." -ForegroundColor Cyan
-cmake -G "MinGW Makefiles" -DCMAKE_TOOLCHAIN_FILE="$ToolchainFile" ..
+cmake -DCMAKE_TOOLCHAIN_FILE="$ToolchainFile" ..
 
 Write-Host "Building External Loader..." -ForegroundColor Cyan
 cmake --build .

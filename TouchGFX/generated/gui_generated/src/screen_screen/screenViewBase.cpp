@@ -23,7 +23,7 @@ screenViewBase::screenViewBase() :
     textArea1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_FPMX));
     add(textArea1);
 
-    button1.setXY(114, 185);
+    button1.setXY(120, 182);
     button1.setBitmaps(touchgfx::Bitmap(BITMAP_ALTERNATE_THEME_IMAGES_WIDGETS_BUTTON_REGULAR_HEIGHT_50_MEDIUM_ROUNDED_NORMAL_ID), touchgfx::Bitmap(BITMAP_ALTERNATE_THEME_IMAGES_WIDGETS_BUTTON_REGULAR_HEIGHT_50_MEDIUM_ROUNDED_PRESSED_ID));
     button1.setAction(buttonCallback);
     add(button1);
@@ -44,8 +44,8 @@ void screenViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
     if (&src == &button1)
     {
         //Interaction1
-        //When button1 clicked change screen to Screen2
-        //Go to Screen2 with no screen transition
-        application().gotoScreen2ScreenNoTransition();
+        //When button1 clicked change screen to Screen1
+        //Go to Screen1 with no screen transition
+        application().gotoScreen1ScreenNoTransition();
     }
 }

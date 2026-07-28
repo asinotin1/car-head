@@ -1,14 +1,13 @@
 MEMORY
 {
-  RAM (xrw)      : ORIGIN = 0x24000000, LENGTH = 512K
+  RAM (xrw) : ORIGIN = 0x24000000, LENGTH = 512K /* AXI SRAM */
 }
-
-ENTRY(Init)
 
 SECTIONS
 {
   .text :
   {
+    KEEP(*(.Dev_info))
     KEEP(*(.text.Init))
     KEEP(*(.text.Write))
     KEEP(*(.text.SectorErase))
@@ -34,7 +33,6 @@ SECTIONS
     *(COMMON)
   } >RAM
 
-  /* Loader Info is required by ST-Link Utility */
   .Loader_Info :
   {
     KEEP(*(.Loader_Info))

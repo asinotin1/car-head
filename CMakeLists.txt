@@ -54,7 +54,6 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     Userlibrary/Bsp_W25q64.c
     Userlibrary/Bsp_Gt9xx.c
     Userlibrary/Bsp_TouchSoftI2C.c
-
 )
 
 # Add include paths
@@ -86,4 +85,3 @@ add_custom_target(flash
     DEPENDS ${CMAKE_PROJECT_NAME}
     COMMENT "Flashing firmware to target MCU using CLIVEONE external loader..."
 )
-

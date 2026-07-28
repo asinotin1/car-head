@@ -23,6 +23,9 @@ public:
     // screen
     void gotoscreenScreenNoTransition();
 
+    // Screen1
+    void gotoScreen1ScreenNoTransition();
+
     // Screen2
     void gotoScreen2ScreenNoTransition();
 
@@ -33,6 +36,9 @@ protected:
 
     // screen
     void gotoscreenScreenNoTransitionImpl();
+
+    // Screen1
+    void gotoScreen1ScreenNoTransitionImpl();
 
     // Screen2
     void gotoScreen2ScreenNoTransitionImpl();

@@ -14,6 +14,8 @@
 
 #include <gui/screen_screen/screenView.hpp>
 #include <gui/screen_screen/screenPresenter.hpp>
+#include <gui/screen1_screen/Screen1View.hpp>
+#include <gui/screen1_screen/Screen1Presenter.hpp>
 #include <gui/screen2_screen/Screen2View.hpp>
 #include <gui/screen2_screen/Screen2Presenter.hpp>
 
@@ -39,9 +41,10 @@ public:
      * @note All view types used in the application MUST be added to this list!
      */
     typedef touchgfx::meta::TypeList< screenView,
+            touchgfx::meta::TypeList< Screen1View,
             touchgfx::meta::TypeList< Screen2View,
-            touchgfx::meta::Nil >
-            > GeneratedViewTypes;
+            touchgfx::meta::Nil
+            > > > GeneratedViewTypes;
 
     /**
      * Determine (compile time) the View type of largest size.
@@ -53,9 +56,10 @@ public:
      * @note All presenter types used in the application MUST be added to this list!
      */
     typedef touchgfx::meta::TypeList< screenPresenter,
+            touchgfx::meta::TypeList< Screen1Presenter,
             touchgfx::meta::TypeList< Screen2Presenter,
-            touchgfx::meta::Nil >
-            > GeneratedPresenterTypes;
+            touchgfx::meta::Nil
+            > > > GeneratedPresenterTypes;
 
     /**
      * Determine (compile time) the Presenter type of largest size.
@@ -75,17 +79,40 @@ public:
      */
     typedef touchgfx::meta::select_type_maxsize< GeneratedTransitionTypes >::type MaxGeneratedTransitionType;
 
-    virtual void gotoStartScreen(FrontendApplication& app)
+    virtual touchgfx::MVPApplication& getApplication()
     {
-        app.gotoscreenScreenNoTransition();
+        return *(touchgfx::MVPApplication*)0;
     }
+
+    virtual Model& getModel()
+    {
+        return *(Model*)0;
+    }
+
+    virtual touchgfx::AbstractPartition& getViewPartition()
+    {
+        return *(touchgfx::AbstractPartition*)0;
+    }
+
+    virtual touchgfx::AbstractPartition& getPresenterPartition()
+    {
+        return *(touchgfx::AbstractPartition*)0;
+    }
+
+    virtual touchgfx::AbstractPartition& getTransitionPartition()
+    {
+        return *(touchgfx::AbstractPartition*)0;
+    }
+
 protected:
-    FrontendHeapBase(touchgfx::AbstractPartition& presenters, touchgfx::AbstractPartition& views, touchgfx::AbstractPartition& transitions, FrontendApplication& app)
-        : MVPHeap(presenters, views, transitions, app)
+    FrontendHeapBase(touchgfx::AbstractPartition& currentPresenters,
+                     touchgfx::AbstractPartition& currentViews,
+                     touchgfx::AbstractPartition& currentTransitions,
+                     FrontendApplication& currentApp)
+        : MVPHeap(currentPresenters, currentViews, currentTransitions, currentApp)
     {
 
     }
-
 };
 
 #endif // FRONTENDHEAPBASE_HPP

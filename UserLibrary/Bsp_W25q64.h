@@ -21,7 +21,6 @@
 #define W25Qxx_CMD_BlockErase_64K 	0xD8
 #define W25Qxx_CMD_ChipErase 		0xC7
 
-#define W25Qxx_CMD_QuadInputPageProgram  	0x32
 #define W25Qxx_CMD_PageProgram           	0x02
 #define W25Qxx_CMD_FastReadQuad_IO       	0xEB
 
