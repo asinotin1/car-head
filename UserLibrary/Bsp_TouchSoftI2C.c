@@ -10,8 +10,16 @@ void Touch_IIC_SetTimerBase(TIM_HandleTypeDef * pSetTimer)
 
 void Touch_IIC_Delay(uint32_t ulTimeUs)
 {
-	__HAL_TIM_SET_COUNTER(pTimerDelayBase,0);
-	while (__HAL_TIM_GET_COUNTER(pTimerDelayBase) < ulTimeUs);
+	if (pTimerDelayBase != NULL)
+	{
+		__HAL_TIM_SET_COUNTER(pTimerDelayBase, 0);
+		while (__HAL_TIM_GET_COUNTER(pTimerDelayBase) < ulTimeUs);
+	}
+	else
+	{
+		volatile uint32_t count = ulTimeUs * 80;
+		while (count--) { __NOP(); }
+	}
 }
 
 void Touch_IIC_GPIO_Config(void)

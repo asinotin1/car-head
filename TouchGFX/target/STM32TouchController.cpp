@@ -23,6 +23,8 @@
 /* USER CODE BEGIN STM32TouchController */
 
 #include <STM32TouchController.hpp>
+#include "Bsp_Gt9xx.h"
+#include "tim.h"
 
 void STM32TouchController::init()
 {
@@ -30,6 +32,8 @@ void STM32TouchController::init()
      * Initialize touch controller and driver
      *
      */
+    Touch_IIC_SetTimerBase(&htim15);
+    Touch_Init();
 }
 
 bool STM32TouchController::sampleTouch(int32_t& x, int32_t& y)
@@ -44,6 +48,13 @@ bool STM32TouchController::sampleTouch(int32_t& x, int32_t& y)
      * By default sampleTouch is called every tick, this can be adjusted by HAL::setTouchSampleRate(int8_t);
      *
      */
+    Touch_Scan();
+    if (touchInfo.flag && touchInfo.num > 0)
+    {
+        x = touchInfo.x[0];
+        y = touchInfo.y[0];
+        return true;
+    }
     return false;
 }
 

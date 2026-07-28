@@ -15,13 +15,12 @@
             "command": "STM32_Programmer_CLI",
             "args": [
                 "-c",
-                "port=swd",
+                "port=swd mode=UR",
                 "-el",
                 "CLIVEONE-W25Q64_STM32H7XX-PF10-PG6-PF8-PF9-PF7-PF6.stldr",
                 "-d",
                 "${workspaceFolder}/build/Debug/car-head.elf",
-                "-rst",
-                "-start"
+                "-rst"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"

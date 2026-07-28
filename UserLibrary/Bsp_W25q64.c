@@ -8,6 +8,7 @@ int8_t QSPI_W25Qxx_Init(void)
 {
 	uint32_t	Device_ID;
 
+	HAL_QSPI_Abort(&hqspi);
 	QSPI_W25Qxx_Reset();
 	Device_ID = QSPI_W25Qxx_ReadID();
 

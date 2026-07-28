@@ -2,7 +2,7 @@
 setlocal enabledelayedexpansion
 
 echo ===================================================
-echo   STM32H7 Car-Head Firmware Flasher
+echo   STM32H7 Car-Head Firmware Flasher (Mode=UR)
 echo ===================================================
 
 set LOADER=CLIVEONE-W25Q64_STM32H7XX-PF10-PG6-PF8-PF9-PF7-PF6.stldr
@@ -19,15 +19,15 @@ if not exist "%ELF%" (
     )
 )
 
-echo [INFO] Flashing firmware to MCU via ST-Link with External Loader...
-STM32_Programmer_CLI -c port=swd -el "%LOADER%" -d "%ELF%" -rst -start
+echo [INFO] Flashing firmware to MCU via ST-Link (Connect Under Reset)...
+STM32_Programmer_CLI -c port=swd mode=UR -el "%LOADER%" -d "%ELF%" -rst
 
 if errorlevel 1 (
     echo.
     echo [ERROR] Flashing failed! Please check ST-Link connection.
 ) else (
     echo.
-    echo [SUCCESS] Flash completed successfully!
+    echo [SUCCESS] Flash completed successfully! MCU restarted.
 )
 
 pause

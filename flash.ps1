@@ -1,5 +1,5 @@
 Write-Host "===================================================" -ForegroundColor Cyan
-Write-Host "  STM32H7 Car-Head Firmware Flasher" -ForegroundColor Cyan
+Write-Host "  STM32H7 Car-Head Firmware Flasher (Mode=UR)" -ForegroundColor Cyan
 Write-Host "===================================================" -ForegroundColor Cyan
 
 $Loader = "CLIVEONE-W25Q64_STM32H7XX-PF10-PG6-PF8-PF9-PF7-PF6.stldr"
@@ -16,11 +16,11 @@ if (!(Test-Path $Elf)) {
     }
 }
 
-Write-Host "[INFO] Flashing firmware via ST-Link with External Loader..." -ForegroundColor Green
-STM32_Programmer_CLI -c port=swd -el "$Loader" -d "$Elf" -rst -start
+Write-Host "[INFO] Flashing firmware via ST-Link (Connect Under Reset)..." -ForegroundColor Green
+STM32_Programmer_CLI -c port=swd mode=UR -el "$Loader" -d "$Elf" -rst
 
 if ($LASTEXITCODE -eq 0) {
-    Write-Host "`n[SUCCESS] Flashing completed successfully!" -ForegroundColor Green
+    Write-Host "`n[SUCCESS] Flashing completed successfully! MCU restarted." -ForegroundColor Green
 } else {
     Write-Host "`n[ERROR] Flashing failed! Check ST-Link connection and power." -ForegroundColor Red
 }

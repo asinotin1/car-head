@@ -52,6 +52,8 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user sources here
     Userlibrary/Bsp_Lcd.c
     Userlibrary/Bsp_W25q64.c
+    Userlibrary/Bsp_Gt9xx.c
+    Userlibrary/Bsp_TouchSoftI2C.c
 
 )
 
@@ -80,7 +82,7 @@ target_link_libraries(${CMAKE_PROJECT_NAME}
 set(EXTERNAL_LOADER "${CMAKE_SOURCE_DIR}/CLIVEONE-W25Q64_STM32H7XX-PF10-PG6-PF8-PF9-PF7-PF6.stldr")
 
 add_custom_target(flash
-    COMMAND STM32_Programmer_CLI -c port=swd -el "${EXTERNAL_LOADER}" -d $<TARGET_FILE:${CMAKE_PROJECT_NAME}> -hardRst -rst -start
+    COMMAND STM32_Programmer_CLI -c port=swd mode=UR -el "${EXTERNAL_LOADER}" -d $<TARGET_FILE:${CMAKE_PROJECT_NAME}> -rst
     DEPENDS ${CMAKE_PROJECT_NAME}
     COMMENT "Flashing firmware to target MCU using CLIVEONE external loader..."
 )
