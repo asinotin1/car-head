@@ -25,36 +25,91 @@
 #include <STM32TouchController.hpp>
 #include "Bsp_Gt9xx.h"
 #include "tim.h"
+#include <stdlib.h>
+
+// Debounce & Noise Filter Configuration
+static const uint32_t DEBOUNCE_PRESS_TICKS = 2;   // Min consecutive frames (~33ms) to confirm touch press
+static const uint32_t DEBOUNCE_RELEASE_TICKS = 2; // Min consecutive frames to confirm touch release
+static const int32_t  JITTER_THRESHOLD = 4;        // Ignore coordinate jitter smaller than 4 pixels
+
+static int32_t  lastX = -1;
+static int32_t  lastY = -1;
+static uint32_t pressCount = 0;
+static uint32_t releaseCount = 0;
+static bool     isTouchActive = false;
 
 void STM32TouchController::init()
 {
-    /**
-     * Initialize touch controller and driver
-     *
-     */
     Touch_IIC_SetTimerBase(&htim15);
     Touch_Init();
+
+    lastX = -1;
+    lastY = -1;
+    pressCount = 0;
+    releaseCount = 0;
+    isTouchActive = false;
 }
 
 bool STM32TouchController::sampleTouch(int32_t& x, int32_t& y)
 {
-    /**
-     * By default sampleTouch returns false,
-     * return true if a touch has been detected, otherwise false.
-     *
-     * Coordinates are passed to the caller by reference by x and y.
-     *
-     * This function is called by the TouchGFX framework.
-     * By default sampleTouch is called every tick, this can be adjusted by HAL::setTouchSampleRate(int8_t);
-     *
-     */
     Touch_Scan();
+
     if (touchInfo.flag && touchInfo.num > 0)
     {
-        x = touchInfo.x[0];
-        y = touchInfo.y[0];
-        return true;
+        releaseCount = 0;
+        pressCount++;
+
+        int32_t rawX = touchInfo.x[0];
+        int32_t rawY = touchInfo.y[0];
+
+        // Apply Press Debounce: Confirm press only after stable consecutive frames
+        if (pressCount >= DEBOUNCE_PRESS_TICKS)
+        {
+            // Apply Coordinate Jitter Filtering for close buttons
+            if (isTouchActive && lastX >= 0 && lastY >= 0)
+            {
+                if (abs(rawX - lastX) < JITTER_THRESHOLD)
+                {
+                    rawX = lastX;
+                }
+                if (abs(rawY - lastY) < JITTER_THRESHOLD)
+                {
+                    rawY = lastY;
+                }
+            }
+
+            lastX = rawX;
+            lastY = rawY;
+            x = rawX;
+            y = rawY;
+            isTouchActive = true;
+            return true;
+        }
+        else if (isTouchActive)
+        {
+            x = lastX;
+            y = lastY;
+            return true;
+        }
     }
+    else
+    {
+        pressCount = 0;
+        releaseCount++;
+
+        // Apply Release Debounce: Prevent false release from momentary signal drops
+        if (isTouchActive && releaseCount < DEBOUNCE_RELEASE_TICKS)
+        {
+            x = lastX;
+            y = lastY;
+            return true;
+        }
+
+        isTouchActive = false;
+        lastX = -1;
+        lastY = -1;
+    }
+
     return false;
 }
 
