@@ -49,7 +49,8 @@
             "armToolchainPath": "${config:STM32VSCodeExtension.cubeCLT.path}/GNU-tools-for-STM32/bin",
             "gdbPath":"${config:STM32VSCodeExtension.cubeCLT.path}/GNU-tools-for-STM32/bin/arm-none-eabi-gdb",            
             "serverArgs": [
-                "-m","0",
+                "-m", "0",
+                "-el", "${workspaceFolder}/CLIVEONE-W25Q64_STM32H7XX-PF10-PG6-PF8-PF9-PF7-PF6.stldr"
             ],
             //"preLaunchTask": "Build + Flash"
             /* If you use external loader, add additional arguments */
@@ -76,7 +77,8 @@
             "armToolchainPath": "${config:STM32VSCodeExtension.cubeCLT.path}/GNU-tools-for-STM32/bin",
             "gdbPath":"${config:STM32VSCodeExtension.cubeCLT.path}/GNU-tools-for-STM32/bin/arm-none-eabi-gdb",            
             "serverArgs": [
-                "-m","0",
+                "-m", "0",
+                "-el", "${workspaceFolder}/CLIVEONE-W25Q64_STM32H7XX-PF10-PG6-PF8-PF9-PF7-PF6.stldr"
             ],
             /* If you use external loader, add additional arguments */
             //"serverArgs": ["--extload", "path/to/ext/loader.stldr"],

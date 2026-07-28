@@ -75,3 +75,13 @@ target_link_libraries(${CMAKE_PROJECT_NAME}
 
     # Add user defined libraries
 )
+
+# Custom target for flashing with External Loader
+set(EXTERNAL_LOADER "${CMAKE_SOURCE_DIR}/CLIVEONE-W25Q64_STM32H7XX-PF10-PG6-PF8-PF9-PF7-PF6.stldr")
+
+add_custom_target(flash
+    COMMAND STM32_Programmer_CLI -c port=swd -el "${EXTERNAL_LOADER}" -d $<TARGET_FILE:${CMAKE_PROJECT_NAME}> -hardRst -rst -start
+    DEPENDS ${CMAKE_PROJECT_NAME}
+    COMMENT "Flashing firmware to target MCU using CLIVEONE external loader..."
+)
+
